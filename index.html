@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Анамыздың 80 жас мерейтойы</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap');
+    :root{--bg:#fffaf6;--accent:#c38b6a;--dark:#3b2f2a}
+    body{font-family:Inter, sans-serif;background:var(--bg);margin:0;padding:32px;display:flex;align-items:center;justify-content:center;min-height:100vh}
+    .card{max-width:720px;background:white;border-radius:18px;padding:34px 36px;box-shadow:0 10px 30px rgba(0,0,0,0.08);position:relative;overflow:hidden}
+    .pattern{position:absolute;right:-120px;top:-60px;opacity:0.12;transform:rotate(12deg)}
+    h1{font-family:'Playfair Display', serif;color:var(--dark);margin:4px 0 6px;font-size:36px}
+    .subtitle{color:var(--accent);font-weight:600;margin-bottom:18px}
+    .details{background:linear-gradient(180deg,#fff 0%,#fffaf0 100%);border:1px solid #f0e6df;padding:18px;border-radius:12px;text-align:left}
+    .row{display:flex;gap:12px;align-items:center;margin-bottom:8px}
+    .label{width:110px;font-weight:600;color:#6b563f}
+    .value{color:#3b2f2a}
+    p.lead{font-size:16px;color:#5a4638;line-height:1.5}
+    footer{margin-top:18px;text-align:right;color:#7a5f4f;font-size:14px}
+    .floral{margin-top:18px;text-align:center}
+    .cta{display:inline-block;margin-top:14px;padding:10px 18px;border-radius:8px;background:var(--accent);color:white;text-decoration:none;font-weight:600;cursor:pointer}
+    /* Modal styles */
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;visibility:hidden;opacity:0;transition:opacity .18s ease,visibility .18s}
+    .modal.open{visibility:visible;opacity:1}
+    .modal-content{background:white;padding:20px;border-radius:10px;Max-width:520px;width:92%;box-shadow:0 8px 30px rgba(0,0,0,0.15)}
+    .field{display:flex;flex-direction:column;margin-bottom:10px}
+    label{font-weight:600;margin-bottom:6px;color:#6b563f}
+    input[type="text"],input[type="email"],textarea,select{padding:10px;border:1px solid #e6d9cf;border-radius:8px;font-size:14px}
+    .modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:12px}
+    .btn{padding:8px 12px;border-radius:8px;border:0;font-weight:600;cursor:pointer}
+    .btn.secondary{background:#f0e6df;color:#6b563f}
+    .btn.primary{background:var(--accent);color:white}
+    @media (max-width:520px){.card{padding:20px}.label{width:94px}h1{font-size:28px}}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <!-- light oyu-pattern SVG -->
+    <svg class="pattern" width="360" height="360" viewBox="0 0 360 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#c59b78"/><stop offset="1" stop-color="#f0d6c1"/></linearGradient>
+      </defs>
+      <circle cx="180" cy="180" r="140" fill="url(#g)"/>
+      <g opacity="0.6" fill="#fff">
+        <path d="M180 60c20 0 36 16 36 36s-16 36-36 36-36-16-36-36 16-36 36-36z"/>
+        <path d="M100 180c0-44 36-80 80-80s80 36 80 80-36 80-80 80-80-36-80-80z"/>
+      </g>
+    </svg>
+
+    <h1>Анамымыздың 80 жас мерейтойы</h1>
+    <div class="subtitle">Сізді қадірлі қонағымыз болуға шақырамыз</div>
+
+    <div class="details">
+      <div class="row"><div class="label">Күні:</div><div class="value">11 қаңтар 2026 (11.01.2026)</div></div>
+      <div class="row"><div class="label">Уақыты:</div><div class="value">Кешкі сағат — (уақытты толтырыңыз)</div></div>
+      <div class="row"><div class="label">Мейрамхана:</div><div class="value">"Simfonia" мейрамханасы</div></div>
+      <div class="row"><div class="label">Мекен-жайы:</div><div class="value">Ақан сері 75</div></div>
+
+      <p class="lead">Ана – өмір нұры, шаңырақтың шуағы. Осы қуанышты күні сізбен бірге қуанып, ақ баталарыңызды алып, әдемі кештің куәсі болуды қалаймыз.
+      
+      </p>
+
+      <div class="floral">
+        <!-- simple floral divider -->
+        <svg width="260" height="40" viewBox="0 0 260 40" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+          <g fill="none" stroke="#c38b6a" stroke-width="1.6">
+            <path d="M10 30 C40 -10, 110 50, 130 20 C150 -10, 220 40, 250 10" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </div>
+
+      <footer>Құрметпен: ұл-қыздары</footer>
+    </div>
+
+    <div style="text-align:center;margin-top:14px">
+      <button id="openRsvp" class="cta" aria-haspopup="dialog">RSVP</button>
+    </div>
+  </div>
+
+  <!-- RSVP Modal -->
+  <div id="rsvpModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="rsvpTitle">
+    <div class="modal-content">
+      <h2 id="rsvpTitle">RSVP — Қатысу туралы хабарлау</h2>
+
+      <form id="rsvpForm">
+        <div class="field">
+          <label for="name">Аты-жөні</label>
+          <input id="name" name="name" type="text" placeholder="Аты-жөніңіз" required>
+        </div>
+
+        <div class="field">
+          <label for="email">Электронды пошта (міндетті емес)</label>
+          <input id="email" name="email" type="email" placeholder="email@example.com">
+        </div>
+
+        <div class="field">
+          <label for="attending">Қатысады ма?</label>
+          <select id="attending" name="attending">
+            <option value="yes">Иә, қатысамын</option>
+            <option value="no">Жоқ, қатыса алмаймын</option>
+            <option value="maybe">Әлдеқалай</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="message">Хабарлама (қалауыңызша)</label>
+          <textarea id="message" name="message" rows="3" placeholder="Қысқаша хабарлама"></textarea>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" id="closeBtn" class="btn secondary">Жабу</button>
+          <button type="submit" class="btn primary">Жіберу</button>
+        </div>
+      </form>
+
+      <p style="margin-top:10px;font-size:13px;color:#7a5f4f">Ескерту: Бұл форма пайдаланушының пошта клиентін ашады (mailto). Егер пошта клиенті орнатылмаған болса, "Хабарламаны көшіру" батырмасын қолданңыз.</p>
+      <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px">
+        <button id="copyBtn" class="btn secondary">Хабарламаны көшіру</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const openBtn = document.getElementById('openRsvp');
+    const modal = document.getElementById('rsvpModal');
+    const closeBtn = document.getElementById('closeBtn');
+    const form = document.getElementById('rsvpForm');
+    const copyBtn = document.getElementById('copyBtn');
+
+    openBtn.addEventListener('click', () => modal.classList.add('open'));
+    closeBtn.addEventListener('click', () => modal.classList.remove('open'));
+    modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('open'); });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const attending = document.getElementById('attending').value;
+      const message = document.getElementById('message').value.trim();
+
+      const subject = encodeURIComponent('RSVP — 80 жас мерейтойы');
+      let body = `Аты-жөні: ${name}%0D%0A`;
+      if (email) body += `Электронды пошта: ${email}%0D%0A`;
+      body += `Қатысу: ${attending}%0D%0A%0D%0A`;
+      if (message) body += `Хабарлама: ${message}%0D%0A`;
+
+      // Open user's mail client with prefilled subject and body to the provided address.
+      window.location.href = `mailto:arsen.maksot.2003@mail.ru?subject=${subject}&body=${body}`;
+      // Close modal after opening mail client
+      modal.classList.remove('open');
+    });
+
+    copyBtn.addEventListener('click', async () => {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const attending = document.getElementById('attending').value;
+      const message = document.getElementById('message').value.trim();
+
+      let text = `RSVP — 80 жас мерейтойы\nАты-жөні: ${name}\n`;
+      if (email) text += `Электронды пошта: ${email}\n`;
+      text += `Қатысу: ${attending}\n\n`;
+      if (message) text += `Хабарлама: ${message}\n`;
+
+      try {
+        await navigator.clipboard.writeText(text);
+        copyBtn.textContent = 'Көшірілді!';
+        setTimeout(() => copyBtn.textContent = 'Хабарламаны көшіру', 1800);
+      } catch (err) {
+        copyBtn.textContent = 'Көшірмеді';
+        setTimeout(() => copyBtn.textContent = 'Хабарламаны көшіру', 1800);
+      }
+    });
+  </script>
+</body>
+</html>
