@@ -9,6 +9,8 @@
     :root{--bg:#fffaf6;--accent:#c38b6a;--dark:#3b2f2a}
     body{font-family:Inter, sans-serif;background:var(--bg);margin:0;padding:32px;display:flex;align-items:center;justify-content:center;min-height:100vh}
     .card{max-width:720px;background:white;border-radius:18px;padding:34px 36px;box-shadow:0 10px 30px rgba(0,0,0,0.08);position:relative;overflow:hidden}
+    .top-ornament{position:absolute;left:0;right:0;top:-40px;display:flex;justify-content:center;pointer-events:none}
+    .bottom-ornament{display:flex;justify-content:center;margin-top:12px}
     .pattern{position:absolute;right:-120px;top:-60px;opacity:0.12;transform:rotate(12deg)}
     h1{font-family:'Playfair Display', serif;color:var(--dark);margin:4px 0 6px;font-size:36px}
     .subtitle{color:var(--accent);font-weight:600;margin-bottom:18px}
@@ -20,6 +22,9 @@
     footer{margin-top:18px;text-align:right;color:#7a5f4f;font-size:14px}
     .floral{margin-top:18px;text-align:center}
     .cta{display:inline-block;margin-top:14px;padding:10px 18px;border-radius:8px;background:var(--accent);color:white;text-decoration:none;font-weight:600;cursor:pointer}
+    /* Audio player */
+    .audio-wrap{display:flex;justify-content:center;margin-top:12px}
+    .audio-player{background:rgba(195,139,106,0.06);padding:8px;border-radius:8px;border:1px solid rgba(195,139,106,0.16)}
     /* Modal styles */
     .modal{position:fixed;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;visibility:hidden;opacity:0;transition:opacity .18s ease,visibility .18s}
     .modal.open{visibility:visible;opacity:1}
@@ -35,6 +40,20 @@
   </style>
 </head>
 <body>
+  <div class="top-ornament" aria-hidden>
+    <!-- Kazakh oyu ornament (stylized SVG) -->
+    <svg width="560" height="80" viewBox="0 0 560 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g fill="none" stroke="#c38b6a" stroke-width="2">
+        <path d="M10 40 C40 10, 80 10, 110 40 S180 70, 220 40 S300 10, 340 40 S420 70, 460 40 S540 10, 560 40" stroke-linecap="round"/>
+        <!-- small rosettes -->
+        <circle cx="70" cy="40" r="6" fill="#c38b6a"/>
+        <circle cx="190" cy="40" r="6" fill="#c38b6a"/>
+        <circle cx="310" cy="40" r="6" fill="#c38b6a"/>
+        <circle cx="430" cy="40" r="6" fill="#c38b6a"/>
+      </g>
+    </svg>
+  </div>
+
   <div class="card">
     <!-- light oyu-pattern SVG -->
     <svg class="pattern" width="360" height="360" viewBox="0 0 360 360" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -48,18 +67,16 @@
       </g>
     </svg>
 
-    <h1>Анамымыздың 80 жас мерейтойы</h1>
+    <h1>Анамыздың 80 жас мерейтойы</h1>
     <div class="subtitle">Сізді қадірлі қонағымыз болуға шақырамыз</div>
 
     <div class="details">
       <div class="row"><div class="label">Күні:</div><div class="value">11 қаңтар 2026 (11.01.2026)</div></div>
-      <div class="row"><div class="label">Уақыты:</div><div class="value">Кешкі сағат — (уақытты толтырыңыз)</div></div>
+      <div class="row"><div class="label">Уақыты:</div><div class="value">12:00</div></div>
       <div class="row"><div class="label">Мейрамхана:</div><div class="value">"Simfonia" мейрамханасы</div></div>
       <div class="row"><div class="label">Мекен-жайы:</div><div class="value">Ақан сері 75</div></div>
 
-      <p class="lead">Ана – өмір нұры, шаңырақтың шуағы. Осы қуанышты күні сізбен бірге қуанып, ақ баталарыңызды алып, әдемі кештің куәсі болуды қалаймыз.
-      
-      </p>
+      <p class="lead">Ана – өмір нұры, шаңырақтың шуағы. Осы қуанышты күні сізбен бірге қуанып, ақ баталарыңызды алып, әдемі кештің куәсі болуды қалаймыз.</p>
 
       <div class="floral">
         <!-- simple floral divider -->
@@ -70,18 +87,44 @@
         </svg>
       </div>
 
-      <footer>Құрметпен: Отбасыңыз</footer>
+      <footer>Құрметпен: Ұл-қыздары</footer>
     </div>
 
     <div style="text-align:center;margin-top:14px">
-      <button id="openRsvp" class="cta" aria-haspopup="dialog">RSVP</button>
+      <button id="openRsvp" class="cta" aria-haspopup="dialog">жауап беру</button>
     </div>
+
+    <div class="audio-wrap">
+      <div class="audio-player" role="region" aria-label="Ана туралы жыр">
+        <!-- Note: upload an MP3 to assets/ana_jyr.mp3 or set src to an external URL -->
+        <audio id="anaSong" controls preload="auto">
+          <source src="assets/ana_jyr.mp3" type="audio/mpeg">
+          Сіздің браузеріңіз аудионы қолдамайды.
+        </audio>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="bottom-ornament" aria-hidden>
+    <!-- floral + oyu bottom ornament -->
+    <svg width="560" height="80" viewBox="0 0 560 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g fill="none" stroke="#c38b6a" stroke-width="1.6">
+        <path d="M10 20 C60 60, 120 0, 180 20 S300 60, 360 20 S480 0, 540 20" stroke-linecap="round"/>
+        <g fill="#f0d6c1">
+          <circle cx="60" cy="30" r="6"/>
+          <circle cx="180" cy="30" r="6"/>
+          <circle cx="300" cy="30" r="6"/>
+          <circle cx="420" cy="30" r="6"/>
+        </g>
+      </g>
+    </svg>
   </div>
 
   <!-- RSVP Modal -->
   <div id="rsvpModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="rsvpTitle">
     <div class="modal-content">
-      <h2 id="rsvpTitle">RSVP — Қатысу туралы хабарлау</h2>
+      <h2 id="rsvpTitle">жауап беру — Қатысу туралы хабарлау</h2>
 
       <form id="rsvpForm">
         <div class="field">
@@ -128,6 +171,7 @@
     const closeBtn = document.getElementById('closeBtn');
     const form = document.getElementById('rsvpForm');
     const copyBtn = document.getElementById('copyBtn');
+    const anaSong = document.getElementById('anaSong');
 
     openBtn.addEventListener('click', () => modal.classList.add('open'));
     closeBtn.addEventListener('click', () => modal.classList.remove('open'));
@@ -171,6 +215,11 @@
         copyBtn.textContent = 'Көшірмеді';
         setTimeout(() => copyBtn.textContent = 'Хабарламаны көшіру', 1800);
       }
+    });
+
+    // Optional: start playing when user explicitly clicks the play button (autoplay with sound is blocked in most browsers)
+    anaSong.addEventListener('play', () => {
+      console.log('Ана туралы жыр ойнатыла бастады');
     });
   </script>
 </body>
